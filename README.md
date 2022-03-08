@@ -1,5 +1,10 @@
-- Elephant detection using YOLO and OpenCV
-- 
-
+**Elephant detection using YOLO and OpenCV**
+- To install opencv library 
+  -  _$pip install opencv-python_
+- Download weight file from given link
+  - https://drive.google.com/file/d/1VmRlRz2Lx36MLyAMFwhpcZxuM7BHJsTj/view?usp=sharing
+- Add config file and weight file to one floder 
+  - write progaram as in main.py 
+  - To get results make some changes where it requires 
 
 
