@@ -1,9 +1,12 @@
 import cv2
 import numpy as np
+#providing image location
 path=r'C:\Users\chinnu\OneDrive\Desktop\obj\6.jpg'
 threshold=0.5
 
 classes=["elephant"]
+
+#function to get the detection from the yolo layers
 def detection(outputs,img):
     ht,wt,ct= img.shape
     bbox=[]
@@ -38,15 +41,21 @@ img=cv2.imread(path)
 x=cv2.resize(img,(600,540))
 y=cv2.resize(img,(600,540))
 cv2.imshow('Input Image',x)
+
+#setting model and config file
 net=cv2.dnn.readNetFromDarknet('yolov4-test.cfg','yolov4-custom_best.weights')
 net.setPreferableBackend(cv2.dnn.DNN_BACKEND_OPENCV)
+#setting to use cpu
 net.setPreferableTarget(cv2.dnn.DNN_TARGET_CPU)
 
+#converting image to blog farmat in which yolo takes as input 
 blob=cv2.dnn.blobFromImage(img,1/255,(416,416),[0,0,0],1,crop=False)
+#Giving input
 net.setInput(blob)
 layerNames=list(net.getLayerNames())
 print(layerNames)
 
+#filtering  yolo layers
 outputNames=[]
 for i in layerNames:
     if i[0]=="y":
